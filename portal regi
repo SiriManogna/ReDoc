@@ -1,0 +1,1156 @@
+openapi: 3.0.0
+info:
+  version: 2018-11
+  title: Portal Account Registration
+  description: >
+    This API specification contains Portal Account Registration/Login & Management of a HCO admin/HCP integrating between CoverOne Web Portal and IBOND sales force platform .
+    <h3>When a HCO admin/HCP wants to register the portal,</h3>
+    <h2>If HCO admin</h2> <table cellpadding="0">
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td width="150" style="padding:0px;"><b>App Fields</b></td>
+        <td width="330" style="padding:0px;"><b>JSON parameter</b></td>
+        <td style="padding:0px;"><b>Data type</b></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Individual First Namel </td>
+        <td style="padding:0px;">FirstName</td>
+        <td style="padding:0px;"></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Individual Last Name</td>
+        <td style="padding:0px;"></td>
+        <td style="padding:0px;"></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Title of Individual  </td>
+        <td style="padding:0px;">Title</td>
+        <td style="padding:0px;"></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Practice NPI </td>
+        <td style="padding:0px;"> NPI#</td>
+        <td style="padding:0px;"></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Individual E-mail address</td>
+        <td style="padding:0px;">Email</td>
+        <td style="padding:0px;"></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Chosen Password </td>
+        <td style="padding:0px;">Password</td>
+        <td style="padding:0px;"></td>
+      </tr>
+      </tr><tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Medical Facility Name</td>
+        <td style="padding:0px;">medicalFacilityName</td>
+        <td style="padding:0px;"></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Address Line 1</td>
+        <td style="padding:0px;"></td>
+        <td style="padding:0px;"></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Address Line 2 </td>
+        <td style="padding:0px;"></td>
+        <td style="padding:0px;"></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Address - City</td>
+        <td style="padding:0px;"></td>
+        <td style="padding:0px;"></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Work Phone</td>
+        <td style="padding:0px;"></td>
+        <td style="padding:0px;"></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Postal Code</td>
+        <td style="padding:0px;"></td>
+        <td style="padding:0px;"></td>
+      </tr>
+      <tr style="border-bottom:solid #ccc 1px;">
+        <td style="padding:0px;">Fax</td>
+        <td style="padding:0px;"></td>
+        <td style="padding:0px;"></td>
+      </tr>
+    </table>
+
+    <br/> <h2>Change Log</h2> <h3>2018-11</h3> <ul>
+      <li>Account Get Response
+        <ul>
+          <li>Added type field</li>
+          <li>Added mobilePhone field</li>
+          <li>Added status field</li>
+          <li>Added therapy field</li>
+          <li>Added interests structure</li>
+          <li>Removed verified field</li>
+          <li>Removed selfIdentified field</li>
+          <li>Removed newsletterEmail field</li>
+          <li>Removed newsletterCommPref field</li>
+          <li>Removed eventsEmail</li>
+          <li>Removed eventsCommPref field</li>
+          <li>Removed unsubscribeAll field</li>
+        </ul>
+      </li>
+      <li>Account Create Request
+        <ul>
+          <li>Added type field</li>
+          <li>Added mobilePhone field</li>
+          <li>Added interests structure</li>
+          <li>Removed onRebif field</li>
+          <li>Changed informationKit field from boolean to string</li>
+          <li>Added informationKitDeliveryMethod field</li>
+          <li>Added mediaDriverSource field</li>
+          <li>Removed newsletterEmail field</li>
+          <li>Removed newsletterCommPref field</li>
+          <li>Removed eventsEmail field</li>
+          <li>Removed eventsCommPref field</li>
+          <li>Removed unsubscribeAll field</li>
+        </ul>
+      </li>
+      <li>Consent model
+        <ul>
+          <li>Renamed CampaignId to ConsentType</li>
+          <li>Added OptOutReason field</li>
+        </ul>
+      </li>
+      <li>Interest model
+        <ul>
+          <li>Added interest model</li>
+        </ul>
+      </li>
+      <li>Get Events
+        <ul>
+          <li>Renamed path from LiveEvents to PatientEvents</li>
+          <li>Added webinar query parameter and field</li>
+          <li>Added brand query parameter and field</li>
+          <li>Added link field</li>
+          <li>Added image field</li>
+          <li>Added shortDescription field</li>
+        </ul>
+      </li>
+      <li>Register Event
+        <ul>
+          <li>Renamed path from LiveEvents to PatientEvents</li>
+          <li>Added receivePhoneReminder query parameter</li>
+          <li>Added permissionToLeaveMessage query parameter</li>
+          <li>Added receiveTextReminder query parameter</li>
+          <li>Added receiveEmailReminder query parameter</li>
+          <li>Added phoneNumber query parameter</li>
+          <li>Added email query parameter</li>
+        </ul>
+      </li>
+    </ul>
+            
+servers:
+  - url: 'https://{instanceUrl}/services/apexrest'
+    description: URL for operations
+    variables:
+      instanceUrl:
+        default: cs1.salesforce.com
+        description: The instance URL returned when obtaining an OAuth token
+security:
+  - bearerAuth: []
+paths:
+  /Account/v5:
+    get:
+      summary: Enroll a Patient
+      operationId: getAccount
+      tags:
+        - Account
+      parameters:
+        - name: firstName
+          in: query
+          description: Patient's First Name
+          required: true
+          schema:
+            type: string
+        - name: lastName
+          in: query
+          description: Patient's Last name
+          required: true
+          schema:
+            type: string
+        - name: dob
+          in: query
+          description: Patient's Date of Birth
+          required: true
+          schema:
+            type: string
+        - name: ssn
+          in: query
+          description: Patient's Social Security Number
+          required: true
+          schema:
+            type: number
+        - name: address1
+          in: query
+          description: Patient's Address Line 1
+          required: true
+          schema:
+            type: string
+        - name: address2
+          in: query
+          description: Patient's Address Line 2
+          required: false
+          schema:
+            type: string
+        - name: city
+          in: query
+          description: Patient's City
+          required: true
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: Patient's State
+          required: true
+          schema:
+            type: string
+        - name: zip
+          in: query
+          description: Patient's zipcode
+          required: true
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: Patient's email
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Return the account details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+        '400':
+          description: Account Id required for get
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+        '500':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+    post:
+      summary: Create an account
+      operationId: createAccount
+      tags:
+        - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/AccountRequest'
+      responses:
+        '200':
+          description: Account created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+        '400':
+          description: 'First name, last name, and email are required'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+        '500':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+    put:
+      summary: Update an account
+      operationId: updateAccount
+      tags:
+        - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/AccountRequest'
+      responses:
+        '200':
+          description: Account updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+        '500':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+  /Account/v5/updateByEmail:
+    put:
+      summary: Update an account by email address
+      operationId: updateAccountByEmail
+      tags:
+        - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/AccountRequest'
+      responses:
+        '200':
+          description: Account updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+        '500':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AccountPostResponse'
+  /PatientEvents/v4/query:
+    get:
+      summary: Retrieve listing of live events
+      operationId: getEvents
+      tags:
+        - Live Events
+      parameters:
+        - name: zipCodes
+          in: query
+          description: Comma separated list of zipCodes for search
+          schema:
+            type: string
+          example: '12345,52141'
+        - name: geoLocation
+          in: query
+          description: Geolocation for radius search
+          schema:
+            type: string
+          example: '71.4131513,-41.5242345'
+        - name: distance
+          in: query
+          description: Distance from geolocation for search radius
+          schema:
+            type: number
+            default: 100
+        - name: startDate
+          description: Filter for the start date.
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          description: |
+            Filter for the end date.  If greater than 60 days in the
+             future, results will still only show events within the 
+             next 60 days.
+          in: query
+          schema:
+            type: string
+        - name: unit
+          in: query
+          description: The unit for the distance
+          schema:
+            type: string
+            enum:
+              - km
+              - mi
+            default: mi
+        - name: language
+          in: query
+          description: Event language
+          schema:
+            type: string
+            enum:
+              - EN
+              - ES
+        - name: eventTypes
+          in: query
+          description: Comma separated list of event types
+          schema:
+            $ref: '#/components/schemas/EventTypes'
+        - name: brand
+          in: query
+          description: |
+            Comma separated list of event brands to filter
+          schema:
+            $ref: '#/components/schemas/BrandEnum'
+        - name: webinar
+          in: query
+          description: >-
+            Exclude this filter or leave blank to show both live and webinar
+            events, true to show only webinars, false to show only live events
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Listing of events
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EventList'
+        '500':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventList'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EventList'
+  /PatientEvents/v4/register:
+    get:
+      summary: Register an account for an event
+      operationId: registerEvent
+      tags:
+        - Live Events
+      parameters:
+        - name: eventId
+          in: query
+          description: The iBond Id of the event
+          required: true
+          schema:
+            type: string
+          example: a01400000A42d
+        - name: accountId
+          in: query
+          description: The iBond Id of the account
+          required: true
+          schema:
+            type: string
+          example: a0g40001141addsf
+        - name: guests
+          in: query
+          description: The number of guests the attendee is bringing with
+          schema:
+            type: number
+            default: 0
+          example: a01400000A42d
+        - name: heardAboutProgram
+          in: query
+          description: How did the registrant hear about the event
+          schema:
+            type: string
+          example: Physician
+        - name: site
+          in: query
+          description: Which site did the registrant originate on
+          schema:
+            type: string
+          example: MSLL
+        - name: receivePhoneReminder
+          in: query
+          description: Does registrant wish to receive reminder via phone call?
+          schema:
+            type: boolean
+        - name: permissionToLeaveMessage
+          in: query
+          description: Is it ok to leave a voicemail message?
+          schema:
+            type: boolean
+        - name: receiveTextReminder
+          in: query
+          description: Does registrant wish to receive reminder via text message?
+          schema:
+            type: boolean
+        - name: receiveEmailReminder
+          in: query
+          description: Does registrant wish to receive reminder via email?
+          schema:
+            type: boolean
+        - name: phoneNumber
+          in: query
+          description: Phone to use for reminder
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: Email to use for reminder
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Successfully registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRegisterResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EventRegisterResponse'
+        '400':
+          description: >-
+            EventId and accountId required, or account already registered for
+            this event
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRegisterResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EventRegisterResponse'
+        '404':
+          description: Event or account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRegisterResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EventRegisterResponse'
+        '500':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRegisterResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EventRegisterResponse'
+  /PeerConnection/v1/:
+    put:
+      summary: Register an account for a peer connection
+      operationId: PeerConnectionRegister
+      tags:
+        - Peer Connection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PeerConnectionRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/PeerConnectionRequest'
+      responses:
+        '200':
+          description: Successfully registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PeerConnectionResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PeerConnectionResponse'
+        '400':
+          description: Account or ambassador not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PeerConnectionResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PeerConnectionResponse'
+        '500':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PeerConnectionResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PeerConnectionResponse'
+components:
+  schemas:
+    AccountResponse:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          example: 0014F0000142y10
+          description: iBond account external Id
+        firstName:
+          type: string
+          example: John
+          description: Patient/Consumer first name
+        lastName:
+          type: string
+          example: Doe
+          description: Patient/Consumer last name
+        type:
+          type: string
+          example: Patient
+          description: What type of account is this
+        middleInitial:
+          type: string
+          example: J
+          description: Patient/Consumer middle initial
+        dateOfBirth:
+          type: string
+          format: date
+          example: '1984-03-24'
+          description: Patient/Consumer date of birth
+        phoneNumber:
+          type: string
+          pattern: '^\d{10,40}$'
+          example: '5551234123'
+          description: Patient/Consumer phone number
+        mobilePhone:
+          type: string
+          pattern: '^\d{10,40}$'
+          example: '5551234123'
+          description: Patient/Consumer mobile phone number
+        addressLine1:
+          type: string
+          example: 1 Main St.
+          description: Patient/Consumer address line 1
+        addressLine2:
+          type: string
+          example: Unit 9
+          description: Patient/Consumer address line 2
+        city:
+          type: string
+          example: Rockland
+          description: Patient/Consumer city
+        state:
+          type: string
+          example: MA
+          description: Patient/Consumer state
+        zipcode:
+          type: string
+          example: 1272
+          pattern: '^[A-Za-z]{2}$'
+          description: Patient/Consumer zip code
+        country:
+          type: string
+          example: US
+          pattern: '^[A-Za-z]{2}$'
+          description: Patient/Consumer country
+        therapyStartDate:
+          type: string
+          format: date
+          example: '2011-03-13'
+          description: Patient/Consumer date started therapy
+        language:
+          type: string
+          pattern: '^[a-zA-Z]{2}$'
+          example: EN
+          description: Language that the consumer/patient speaks
+        status:
+          $ref: '#/components/schemas/AccountStatusEnum'
+        therapy:
+          type: string
+          example: Rebif
+          description: Which therapy/program the patient is in
+        consents:
+          type: object
+          properties:
+            consent:
+              type: array
+              items:
+                $ref: '#/components/schemas/Consent'
+        interests:
+          type: object
+          properties:
+            interest:
+              type: array
+              items:
+                $ref: '#/components/schemas/Interest'
+        error:
+          $ref: '#/components/schemas/Error'
+      xml:
+        name: response
+    AccountRequest:
+      type: object
+      properties:
+        account:
+          type: object
+          required:
+            - email
+            - firstName
+            - lastName
+          properties:
+            accountId:
+              type: string
+              example: ''
+              description: iBond external Id. Should be blank when creating a new account.
+            webId:
+              type: string
+              example: '4151234'
+            email:
+              type: string
+              example: test@gmail.com
+            firstName:
+              type: string
+              example: Bob
+            middleInitial:
+              type: string
+              example: S
+            lastName:
+              type: string
+              example: Jones
+            type:
+              type: string
+              example: Patient
+              description: What type of account is this
+            dateOfBirth:
+              type: string
+              format: date
+              example: '1976-04-15'
+            mobilePhone:
+              type: string
+              pattern: '^\d{10,40}$'
+              example: '5551234123'
+              description: Patient/Consumer mobile phone number
+            phoneNumber:
+              type: string
+              pattern: '^\d{10,40}$'
+              example: '5551234123'
+            addressLine1:
+              type: string
+              example: 1 Main St.
+            addressLine2:
+              type: string
+              example: Unit 9
+            city:
+              type: string
+              example: Rockland
+            state:
+              type: string
+              example: MA
+            zipcode:
+              type: string
+              example: 1272
+              pattern: '^[A-Za-z]{2}$'
+            country:
+              type: string
+              example: US
+              pattern: '^[A-Za-z]{2}$'
+            informationKit:
+              type: string
+              enum:
+                - RebifInfoKitEN
+                - RebifInfoKitES
+                - MavencladInfoKitEN
+                - MavencladInfoKitES
+            informationKitDeliveryMethod:
+              type: string
+              enum:
+                - Email
+                - Mail
+              example: Mail
+            startMonth:
+              type: number
+              example: 5
+            startYear:
+              type: number
+              example: 2011
+            registrationSite:
+              type: string
+              example: MSLL
+            mediaDriverSource:
+              type: string
+              example: Facebook
+            language:
+              type: string
+              pattern: '^[a-zA-Z]{2}$'
+              example: EN
+            therapy:
+              type: string
+              example: Rebif
+            consents:
+              type: object
+              properties:
+                consent:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Consent'
+            interests:
+              type: object
+              properties:
+                interest:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Interest'
+            questionAnswers:
+              type: object
+              properties:
+                questionAnswer:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/QuestionAnswer'
+      xml:
+        name: request
+    AccountPostResponse:
+      type: object
+      properties:
+        accountId:
+          type: string
+          example: 0014F0000142y10
+          description: iBond external Id of the patient/consumer account
+        error:
+          $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: string
+        errorText:
+          type: string
+      example:
+        errorCode: 1000
+        errorText: Generic Error
+    QuestionAnswer:
+      type: object
+      properties:
+        question:
+          type: string
+          example: How are you?
+        answer:
+          type: string
+          example: Good
+    Interest:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/ConsentInterestType'
+        active:
+          type: boolean
+          description: >-
+            True if this is a current active interest, false to remove their
+            interest
+    Consent:
+      type: object
+      properties:
+        Id:
+          type: string
+          example: a0G4F0000141BcSUAW
+          description: iBond Id of the patient/consumer consent record
+        ConsentType:
+          $ref: '#/components/schemas/ConsentInterestType'
+        Name:
+          type: string
+          example: Marketing MSLL/Wellness
+          description: Name of the marketing campaign
+        Channels:
+          type: string
+          example: Mail;Phone;Email
+          description: >
+            Semicolon separated list of channels which the patient/consumer 
+            allows receiving communications on
+        Prefers:
+          type: string
+          enum:
+            - Mail
+            - Phone
+            - Email
+            - Text
+          description: Which channel does the patient/consumer prefer
+        OptOut:
+          type: boolean
+          description: |
+            Is the patient/consumer opted out of this  campaign/program 
+        OptOutReason:
+          type: string
+          description: Why are they opting out
+    EventList:
+      type: object
+      properties:
+        count:
+          type: number
+        events:
+          type: object
+          properties:
+            event:
+              type: array
+              items:
+                $ref: '#/components/schemas/Event'
+        error:
+          $ref: '#/components/schemas/Error'
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          example: a0149100002Fwr
+          description: iBond Id of the event
+        name:
+          type: string
+          example: Let's Chat About MS
+          description: Name of the event
+        shortDescription:
+          type: string
+          example: Learn more about MS
+          description: A short description of the event
+        description:
+          type: string
+          example: >-
+            Want to learn more about MS? During this session you will learn
+            about ...
+          description: The full description for the event
+        image:
+          type: string
+          description: >-
+            Id or URL to be provided by web team to render an image for this
+            event
+        eventType:
+          $ref: '#/components/schemas/EventTypes'
+        numberOfAttendees:
+          type: number
+          description: Current number of registered attendees
+        maxAttendees:
+          type: number
+          description: Maximum number of attendees
+        eventDate:
+          type: string
+          format: date
+          description: Date the event takes place
+        startTime:
+          type: string
+          example: '7:30 AM'
+          description: The time the event starts
+        endTime:
+          type: string
+          example: '10:30 AM'
+          description: The time the event ends
+        timeZone:
+          type: string
+          enum:
+            - EST
+            - CST
+            - MST
+            - PST
+            - AKST
+            - HST
+          description: Timezone where the event is happening
+        venueName:
+          type: string
+          example: Quincy Hilton
+          description: Name of the location where the event takes place
+        venueAddress:
+          type: string
+          example: 1 Main St.
+        venueCity:
+          type: string
+          example: Quincy
+        venueState:
+          type: string
+          example: MA
+        venueZip:
+          type: string
+          example: 65243
+        presenter:
+          type: string
+          example: Dr. John Smith
+        language:
+          type: string
+          example: EN
+        latitude:
+          type: number
+          example: 71.4131412
+        longitude:
+          type: number
+          example: -41.153423
+        distance:
+          type: number
+          example: 32
+          description: How far away from the search geocoded coordinates is this location
+        brand:
+          $ref: '#/components/schemas/BrandEnum'
+        meal:
+          type: string
+          example: Breakfast will be provided
+          description: 'What type of meal is provided at the event, if any.'
+        link:
+          type: string
+          description: URL to a website page
+          example: 'https://webinar/1234'
+        isWebinar:
+          type: boolean
+          description: Is this a webinar?
+          example: true
+    EventRegisterResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - Success
+            - 'Success:Waitlist'
+            - Failed
+          example: Success
+        event:
+          $ref: '#/components/schemas/Event'
+        error:
+          $ref: '#/components/schemas/Error'
+    PeerConnectionRequest:
+      type: object
+      required:
+        - accountId
+        - requestedAmbassador
+        - date1
+        - time1
+        - timeZone
+      properties:
+        accountId:
+          type: string
+          example: 005a401000asdnF
+          description: iBond external Id of the patient/consumer account
+        requestedAmbassador:
+          type: string
+          example: a04a1241300sRsa
+          description: iBond Id of the ambassador
+        date1:
+          type: string
+          format: date
+          description: First date requested
+        time1:
+          type: string
+          example: '7:30 AM'
+          description: First time requested
+        date2:
+          type: string
+          format: date
+          description: Second date requested
+        time2:
+          type: string
+          example: '7:30 AM'
+          description: Second time requested
+        date3:
+          type: string
+          format: date
+          description: Third date requested
+        time3:
+          type: string
+          example: '7:30 AM'
+          description: Third time requested
+        timeZone:
+          type: string
+          enum:
+            - EST
+            - CST
+            - MST
+            - PST
+            - AKST
+            - HST
+          description: Time zone of the requested times
+    PeerConnectionResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/Error'
+    AccountStatusEnum:
+      type: string
+      enum:
+        - Verified Patient
+        - Self-Reported Patient
+        - Consumer
+    BrandEnum:
+      type: string
+      example: Rebif
+      enum:
+        - Rebif
+        - Mavenclad
+        - Unbranded
+    EventTypes:
+      type: string
+      enum:
+        - FDPP
+        - C.H.A.T.
+      description: Type of the event
+    ConsentInterestType:
+      type: string
+      description: Unique identifier for the type of consent
+      enum:
+        - Text
+        - MSLLServices
+        - USRebifProductInfo
+        - USMavencladProductInfo
+        - MSLLWellnessInfo
+      example: MSLLWellnessInfo
+  securitySchemes:
+    oauth:
+      type: oauth2
+      description: >-
+        Standard Salesforce oauth2 authentication.  <br/>For sandboxes, login at
+        `https://test.salesforce.com/services/oauth2/authorize` <br/>Once a
+        token is obtained, pass it in on subsequent requests in the
+        authorization header in format "Bearer <token>" <br/>See
+        `https://help.salesforce.com/articleView?id=remoteaccess_authenticate_overview.htm`
+        for more information regarding authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://login.salesforce.com/services/oauth2/authorize'
+          tokenUrl: 'https://login.salesforce.com/services/oauth2/token'
+          scopes:
+            general: General access to api
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'For all API requests, pass in the token obtained via oauth'
